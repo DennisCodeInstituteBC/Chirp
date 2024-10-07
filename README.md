@@ -75,6 +75,13 @@
 </details>
 
 ## ER Diagram 
+<details>
+  <summary> ER Diagram </summary>
+
+  ![image](https://github.com/user-attachments/assets/1fa76d24-362d-4222-81e7-9dd750ba7545)
+</details>
+
+
 ## Colour Scheme
 ## Fonts 
 
