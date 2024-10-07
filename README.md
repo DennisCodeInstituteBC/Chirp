@@ -60,6 +60,7 @@
   <summary> Log In / Registration Page</summary>
   
   ![image](https://github.com/user-attachments/assets/98c6d9a9-072b-4dd8-b8e4-f5e195161a5b)
+  ![image](https://github.com/user-attachments/assets/49e5bc8f-2814-43c8-89e8-f0b14445133e)
 </details>
 
 <details>
