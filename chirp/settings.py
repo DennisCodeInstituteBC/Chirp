@@ -30,7 +30,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net', ]
+ALLOWED_HOSTS = ['8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
+ ]
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',]
 
 
 # Application definition
