@@ -84,6 +84,25 @@
 
 
 ## Colour Scheme
+<details>
+  <summary> Colour Scheme Options Variants With Wire-Frame </summary>
+  
+  ![image](https://github.com/user-attachments/assets/8a5b5f83-0ccc-4c21-90a4-fe1ede844301)
+  ![image](https://github.com/user-attachments/assets/b2953bd0-3a7c-42dd-be9f-28132e1f01d6)
+  ![image](https://github.com/user-attachments/assets/373344aa-f734-4ed9-a4e8-107c17ef8e8b)
+</details>
+Chosen Colour Scheme Template:
+ 
+ ![image](https://github.com/user-attachments/assets/b2953bd0-3a7c-42dd-be9f-28132e1f01d6)
+ 
+Using #1DA1F2 ![Sky Blue](https://img.shields.io/badge/Sky%20Blue-1DA1F2?style=flat-square&logo=Twitter&logoColor=white) in the navigation bar creates a clear focal point, guiding users toward key navigational elements. Its vibrant yet calming nature enhances readability and contrast, ensuring the interface remains user-friendly. Blue also evokes trust and reliability, making the app feel approachable and secure.
+
+#DDDDDD ![Gray5 Color Block](https://img.shields.io/badge/Gray5-DDDDDD?style=flat-square&logoColor=black) as the body background creates a soft and clean backdrop, ensuring that content, buttons, and interactive elements stand out clearly. It also reduces strain on the eyes compared to pure white while maintaining a modern, minimalist aesthetic.
+
+#FFFFFF ![#FFFFFF White Color Block](https://img.shields.io/badge/White-FFFFFF?style=flat-square&logoColor=black) for the content background ensures a clean, readable space that highlights user interactions. Paired with #DDDDDD ![#DDDDDD Gray5 Color Block](https://img.shields.io/badge/Gray5-DDDDDD?style=flat-square&logoColor=black) body background, it creates clear visual separation and balance.
+
+#17BF63 ![#17BF63 Green](https://img.shields.io/badge/Green-17BF63?style=flat-square&logoColor=white) for buttons adds a vibrant, energetic touch that draws attention to interactive elements. This colour choice reinforces positive actions like submitting or following while ensuring buttons stand out against the neutral backgrounds.
+
 ## Fonts 
 
 # Testing
