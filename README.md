@@ -1,5 +1,12 @@
 # Overview
+This project aims to create a user-friendly platform that allows users to connect, communicate, and showcase their interests through customizable profiles and interactive features. Below are the key user stories that outline the functionalities of the application.
+
 ### Target Audience
+This application is designed for individuals who are looking to connect with others based on shared interests and collaborate within a community. The target audience includes:
+
+- **Social Media Enthusiasts:** Users who enjoy networking and engaging with others through online platforms.
+- **Professionals and Creatives:** Individuals seeking to showcase their skills, portfolios, and interests to a broader audience.
+- **Students and Learners:** Users interested in connecting with peers for study groups, projects, and collaborative learning.
 
 ## User Stories
 1. As a user, I can create an account so that I can customize my profile
