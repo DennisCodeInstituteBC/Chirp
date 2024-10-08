@@ -1,1 +1,1 @@
-web: gunicorn chirpsocial.wsgi
+web: gunicorn chirp.wsgi
