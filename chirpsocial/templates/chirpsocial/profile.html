@@ -9,11 +9,32 @@
                 {{ profile.user.username }}'s Chirp
             </h1>
         </div>
-        <div class="buttons has-addons">
-            <button class="button is-success">Follow</button>
-            <button class="button is-danger">Unfollow</button>
+        <form method="post">
+            {% csrf_token %}
+        <div class="">
+            {% if profile in user.profile.follows.all %}
+                <button class="btn btn-dark btn-sm" disabled>Follow</button>
+                <button class="btn btn-secondary btn-sm" name="follow" value="unfollow">Unfollow</button>
+            {% else %}
+                <button class="btn btn-dark btn-sm" name="follow" value="follow">Follow</button>
+                <button class="btn btn-secondary btn-sm"disabled>Unfollow</button>
+            {% endif %}
         </div>
+        </form>
     </div>
+
+
+    <div class="content">
+        {% for chirp in profile.user.chirps.all %}
+            <div class="box">
+                {{ chirp.body }}
+                <span class="is-small has-text-grey-light">
+                    ({{ chirp.created_at }})
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+
 
     <div class="col-md-4"> <!-- Adjusting to a Bootstrap column layout -->
         <div class="mb-3">
