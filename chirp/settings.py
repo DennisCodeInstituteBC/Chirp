@@ -31,11 +31,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
-                '8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net'
+                '8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net',
+                'localhost', '127.0.0.1'
  ]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
-                        'https://8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net']
+                        'https://8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net',
+                        'https://localhost:8000']
 
 
 # Application definition

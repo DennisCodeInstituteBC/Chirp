@@ -9,12 +9,15 @@
                 {{ profile.user.username }}'s Chirp
             </h1>
         </div>
+        <div class="buttons has-addons">
+            <button class="button is-success">Follow</button>
+            <button class="button is-danger">Unfollow</button>
+        </div>
     </div>
 
     <div class="col-md-4"> <!-- Adjusting to a Bootstrap column layout -->
         <div class="mb-3">
             <a href="{% url 'chirp:profile_list' %}">
-                
                 <button class="btn btn-outline-dark btn-block">
                     All Profiles
                 </button>
@@ -24,6 +27,7 @@
             <h3 class="h5">
                 {{ profile.user.username }} follows:
             </h3>
+            
             <div class="content">
                 <ul class="list-unstyled">
                     {% for following in profile.follows.all %}
@@ -34,6 +38,7 @@
                         </li>
                     {% endfor %}
                 </ul>
+                
             </div>
         </div>
 
