@@ -1,0 +1,25 @@
+.main-body{
+    background-color: #DDDDDD ;
+}
+
+nav {
+    background-color: #1DA1F2;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+.navbar a {
+    color: white; 
+    font-size: 20px;
+    margin-inline: 10px;
+}
+
+.navbar .form-control {
+    border-radius: 10px;
+}
+
+.btn {
+    background-color: #fff;
+}
