@@ -33,13 +33,14 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
                 '8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net',
                 'chirp-social-fcb5ac910432.herokuapp.com',
-                'localhost', '127.0.0.1'
+                'localhost', '127.0.0.1','.herokuapp.com'
  ]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
                         'https://8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net',
                         'https://localhost:8000', 
-                        'https://chirp-social-fcb5ac910432.herokuapp.com']
+                        'https://chirp-social-fcb5ac910432.herokuapp.com',
+                        "https://*.herokuapp.com",]
 
 
 # Application definition
