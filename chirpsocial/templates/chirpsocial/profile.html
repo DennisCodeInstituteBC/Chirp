@@ -1,0 +1,59 @@
+{% extends 'chirpsocial/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4 text-uppercase">
+                {{ profile.user.username }}'s Chirp
+            </h1>
+        </div>
+    </div>
+
+    <div class="col-md-4"> <!-- Adjusting to a Bootstrap column layout -->
+        <div class="mb-3">
+            <a href="{% url 'chirp:profile_list' %}">
+                
+                <button class="btn btn-outline-dark btn-block">
+                    All Profiles
+                </button>
+            </a>
+        </div>
+        <div class="mb-4">
+            <h3 class="h5">
+                {{ profile.user.username }} follows:
+            </h3>
+            <div class="content">
+                <ul class="list-unstyled">
+                    {% for following in profile.follows.all %}
+                        <li>
+                            <a href="{% url 'chirp:profile' following.id %}" class="text-decoration-none">
+                                {{ following }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="h5">
+                {{ profile.user.username }} is followed by:
+            </h3>
+            <div class="content">
+                <ul class="list-unstyled">
+                    {% for follower in profile.followed_by.all %}
+                        <li>
+                            <a href="{% url 'chirp:profile' follower.id %}" class="text-decoration-none">
+                                {{ follower }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
