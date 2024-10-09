@@ -15,7 +15,7 @@ def dashboard(request):
         return render(request, "chirpsocial/dashboard.html", {"form": form})
 
 def profile_list(request):
-    profiles = Profile.objects.exclude()
+    profiles = Profile.objects.all()
     return render(
         request, "chirpsocial/profile_list.html", {"profiles": profiles})
 
