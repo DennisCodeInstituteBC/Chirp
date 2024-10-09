@@ -19,6 +19,7 @@ def profile_list(request):
     return render(
         request, "chirpsocial/profile_list.html", {"profiles": profiles})
 
+
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
@@ -36,6 +37,3 @@ def profile(request, pk):
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
     return render(request, "chirpsocial/profile.html", {"profile": profile})
-
-def dashboard(request):
-    return render(request, "chirpsocial/dashboard.html")
