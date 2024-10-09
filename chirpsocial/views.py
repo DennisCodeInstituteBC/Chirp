@@ -1,12 +1,21 @@
 from django.shortcuts import render
+from .forms import ChirpForm
 from .models import Profile
+from django.shortcuts import render, redirect
 
 # Create your views here.
 def dashboard(request):
-    return render(request, "chirpsocial/base.html")
+     if request.method == "POST":
+        form = ChirpForm(request.POST or None)
+        if form.is_valid():
+            chirp = form.save(commit=False)
+            chirp.user = request.user
+            chirp.save()
+            return redirect("chirpsocial:dashboard")
+        return render(request, "chirpsocial/dashboard.html", {"form": form})
 
 def profile_list(request):
-    profiles = Profile.objects.exclude()
+    profiles = Profile.objects.all()
     return render(
         request, "chirpsocial/profile_list.html", {"profiles": profiles})
 
