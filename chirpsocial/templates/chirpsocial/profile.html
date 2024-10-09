@@ -3,11 +3,18 @@
 {% block content %}
 
 <div class="container">
-    <div class="row mb-4">
-        <div class="col">
-            <h1 class="display-4 text-uppercase">
-                {{ profile.user.username }}'s Chirp
-            </h1>
+
+    <body class="bg-light">
+        <div class="container mt-5">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <h5 class="display-5 text-uppercase">
+                            {{ profile.user.username }}'s Chirp
+                        </h5>
+                </div>
+            </div>
+
         </div>
         <form method="post">
             {% csrf_token %}
@@ -21,23 +28,28 @@
                 {% endif %}
             </div>
         </form>
-    </div>
+</div>
 
-
-    <div class="content">
-        {% for chirp in profile.user.chirps.all %}
-        <div class="box">
-            {{ chirp.body }}
-            <span class="is-small has-text-grey-light">
-                ({{ chirp.created_at }})
-            </span>
-        </div>
-        {% endfor %}
-    </div>
-
-
-    <div class="col-md-4">
-        <!-- Adjusting to a Bootstrap column layout -->
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <div class="mb-4">
+                        <div class="content">
+                            {% for chirp in profile.user.chirps.all %}
+                            <div class="box">
+                                {{ chirp.body }}
+                                <span class="is-small has-text-grey-light">
+                                    ({{ chirp.created_at }})
+                                </span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </h5>
+            </div>
+        </div <!-- Adjusting to a Bootstrap column layout -->
         <div class="mb-3">
             <a href="{% url 'chirp:profile_list' %}">
                 <button class="btn btn-outline-dark btn-block">
@@ -45,58 +57,81 @@
                 </button>
             </a>
         </div>
-        <div class="mb-4">
-            <h3 class="h5">
-                Name: {{ profile.name }}
-            </h3>
-            <div class="mb-4">
-                <h3 class="h5">
-                    Gender: {{ profile.gender }}
-                </h3>
+
+        <body class="bg-light">
+            <div class="container mt-5">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <div class="mb-4">
+                                <h3 class="h5">
+                                    Name: {{ profile.name }}
+                                </h3>
+                                <div class="mb-4">
+                                    <h3 class="h5">
+                                        Gender: {{ profile.gender }}
+                                    </h3>
+                                    <div class="mb-4">
+                                        <h3 class="h5">
+                                            Age: {{ profile.age }}
+                                        </h3>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
                 <div class="mb-4">
                     <h3 class="h5">
-                        Age: {{ profile.age }}
+                        {{ profile.user.username }} follows:
                     </h3>
 
-                    <div class="mb-4">
-                        <h3 class="h5">
-                            {{ profile.user.username }} follows:
-                        </h3>
 
+                    <div class="content">
+                        <ul class="list-unstyled">
+                            {% for following in profile.follows.all %}
+                            <li>
+                                <a href="{% url 'chirp:profile' following.id %}" class="text-decoration-none">
+                                    {{ following }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
 
-
-                        <div class="content">
-                            <ul class="list-unstyled">
-                                {% for following in profile.follows.all %}
-                                <li>
-                                    <a href="{% url 'chirp:profile' following.id %}" class="text-decoration-none">
-                                        {{ following }}
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-
-                        </div>
                     </div>
                 </div>
             </div>
-            <div>
-                <h3 class="h5">
-                    {{ profile.user.username }} is followed by:
-                </h3>
-                <div class="content">
-                    <ul class="list-unstyled">
-                        {% for follower in profile.followed_by.all %}
-                        <li>
-                            <a href="{% url 'chirp:profile' follower.id %}" class="text-decoration-none">
-                                {{ follower }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
+    <div>
 
-    {% endblock content %}
+        <body class="bg-light"></body>
+        <div class="container mt-5">
+            <h3 class="h5">
+                {{ profile.user.username }} is followed by:
+            </h3>
+        </div>
+
+            <body class="bg-light">
+                <div class="container mt-5">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="mb-4">
+                                    <div class="content">
+                                        <ul class="list-unstyled">
+                                            {% for follower in profile.followed_by.all %}
+                                            <li>
+                                                <a href="{% url 'chirp:profile' follower.id %}"
+                                                    class="text-decoration-none">
+                                                    {{ follower }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    {% endblock content %}
