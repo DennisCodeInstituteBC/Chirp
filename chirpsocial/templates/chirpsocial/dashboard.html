@@ -11,7 +11,7 @@
 </div>
 
 <div class="block">
-    <a href="{% url 'chirp:profile' pk=user.profile.pk %} ">
+    <a href="{% url 'chirp:profile' request.user.profile.id %} ">
         <button class="button is-success is-light is-outlined is-fullwidth">
             My Profile
         </button>
