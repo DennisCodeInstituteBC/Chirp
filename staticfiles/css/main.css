@@ -1,31 +1,78 @@
-.main-body{
-    background-color: #DDDDDD ;
+.form-group {
+    position: relative;
 }
 
-nav {
-    background-color: #1DA1F2;
+.form-group textarea {
+    padding-top: 30px; /* Adjust padding to make space for the placeholder */
 }
 
-.navbar-brand{
-    font-weight: bold;
+.form-group .placeholder-text {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: #6c757d;
+    pointer-events: none;
+    transition: 0.2s ease;
 }
 
-.navbar a {
-    color: white; 
-    font-size: 20px;
-    margin-inline: 10px;
+.form-group textarea:focus + .placeholder-text,
+.form-group textarea:not(:placeholder-shown) + .placeholder-text {
+    top: -10px;
+    left: 12px;
+    font-size: 12px;
+    color: #007bff;
 }
 
-.navbar .form-control {
-    border-radius: 10px;
+.comment-box {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f8f9fa;
 }
 
-.btn {
-    background-color: #fff;
+.comment-date {
+    font-size: 0.85rem;
+    color: #6c757d;
+    text-align: left;
+}
+.navbar {
+    padding: 0.5rem 1rem; /* Make the navbar smaller */
 }
 
-.main-container{
-    background-color: #fff;
+.nav-link i {
+    font-size: 1.2rem; /* Adjust icon size for better visibility */
+}
+
+.form-control {
+    height: 30px; /* Reduce the height of the search input */
+    font-size: 0.9rem;
+}
+
+.btn-outline-primary {
+    padding: 0.25rem 0.5rem; /* Smaller button for the search */
+    font-size: 0.9rem;
+}
+
+.dropdown-menu {
+background-color: #ffffff; /* Ensure the background is white */
+border: 1px solid #ddd; /* Add a border for definition */
+border-radius: 5px; /* Round the corners */
+padding: 0; /* Remove default padding */
+overflow: hidden; /* Ensure content stays inside the dropdown */
+}
+
+.dropdown-item {
+padding: 10px 15px; /* Add padding for better spacing */
+color: #212529; /* Ensure text color is dark for visibility */
+}
+
+.dropdown-item:hover {
+background-color: #f0f0f0; /* Add a light background on hover */
+color: #000; /* Keep text color black on hover for contrast */
+}
+
+.dropdown-divider {
+margin: 0; /* Remove margin to fit nicely */
 }
 .form-group {
     position: relative;

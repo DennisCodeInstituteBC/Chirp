@@ -19,6 +19,7 @@ def profile_list(request):
     return render(
         request, "chirpsocial/profile_list.html", {"profiles": profiles})
 
+
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
