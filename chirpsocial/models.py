@@ -12,6 +12,9 @@ class Profile(models.Model):
         symmetrical=False,
         blank=True
     )
+    name = models.CharField(max_length=200, unique=False)
+    gender = models.CharField(max_length=200, unique=False)
+    age = models.IntegerField()
 
     def __str__(self):
         return self.user.username
