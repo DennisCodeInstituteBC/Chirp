@@ -49,9 +49,7 @@
                     </div>
                 </h5>
             </div>
-        </div 
-    
-        <!-- Adjusting to a Bootstrap column layout -->
+        </div <!-- Adjusting to a Bootstrap column layout -->
         <div class="mb-3">
             <a href="{% url 'chirp:profile_list' %}">
                 <button class="btn btn-outline-dark btn-block">
@@ -106,22 +104,34 @@
             </div>
     </div>
     <div>
-        <h3 class="h5">
-            {{ profile.user.username }} is followed by:
-        </h3>
-        <div class="content">
-            <ul class="list-unstyled">
-                {% for follower in profile.followed_by.all %}
-                <li>
-                    <a href="{% url 'chirp:profile' follower.id %}" class="text-decoration-none">
-                        {{ follower }}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-    </div>
-    </div>
 
-    {% endblock content %}
+        <body class="bg-light"></body>
+        <div class="container mt-5">
+            <h3 class="h5">
+                {{ profile.user.username }} is followed by:
+            </h3>
+        </div>
+
+            <body class="bg-light">
+                <div class="container mt-5">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <div class="mb-4">
+                                    <div class="content">
+                                        <ul class="list-unstyled">
+                                            {% for follower in profile.followed_by.all %}
+                                            <li>
+                                                <a href="{% url 'chirp:profile' follower.id %}"
+                                                    class="text-decoration-none">
+                                                    {{ follower }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    {% endblock content %}
