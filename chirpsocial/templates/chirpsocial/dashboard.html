@@ -3,20 +3,13 @@
 
 {% block content %}
 <div class="block">
-    <a href="{% url 'chirp:profile_list' %} ">
+    <a href="{% url 'chirp:profile_list' %}">
         <button class="button is-dark is-outlined is-fullwidth">
             All Profiles
         </button>
     </a>
 </div>
 
-<div class="block">
-    <a href="{% url 'chirp:profile' request.user.profile.id %} ">
-        <button class="button is-success is-light is-outlined is-fullwidth">
-            My Profile
-        </button>
-    </a>
-</div>
 
 <body class="bg-light">
     <div class="container mt-5">
@@ -30,28 +23,29 @@
                         <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
                     </form>
                 </div>
-                
             </div>
         </div>
 
         <div class="mt-4">
             <h5>Chirps</h5>
-            {% for followed in user.profile.follows.all %}
-            {% for chirp in followed.user.chirps.all %}
-
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body comment-box">
-                    <h6 class="card-subtitle mb-2 text-muted">{{ chirp.user.username }}</h6>
-                    <p class="card-text">{{ chirp.body }}</p>
-                    <div class="comment-date">Posted on: {{ chirp.created_at }}</div>
-                </div>
-            </div>
-
-            {% endfor %}
-            {% endfor %}
+            {% if user.profile.follows.all %}
+                {% for followed in user.profile.follows.all %}
+                    {% for chirp in followed.user.chirps.all %}
+                        <div class="card mb-3 shadow-sm">
+                            <div class="card-body comment-box">
+                                <h6 class="card-subtitle mb-2 text-muted">{{ chirp.user.username }}</h6>
+                                <p class="card-text">{{ chirp.body }}</p>
+                                <div class="comment-date">Posted on: {{ chirp.created_at }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% else %}
+                <p>No chirps available to display. Start following users to see their chirps here.</p>
+            {% endif %}
         </div>
     </div>
-
+</body>
 
 {% endblock content %}
 
