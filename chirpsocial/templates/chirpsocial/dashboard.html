@@ -1,53 +1,59 @@
 {% extends 'chirpsocial/base.html' %}
 
+
 {% block content %}
+<div class="block">
+    <a href="{% url 'chirp:profile_list' %} ">
+        <button class="button is-dark is-outlined is-fullwidth">
+            All Profiles
+        </button>
+    </a>
+</div>
 
-<div class="column">
-    {% for followed in user.profile.follows.all %}
-        {% for chirp in followed.user.chirp.all %}
-            <div class="box">
-                {{chirp.body}}
-                <span class="is-small has-text-grey-light">
-                    ({{ chirp.created_at }} by {{ chirp.user.username }})
-                </span>
+<div class="block">
+    <a href="{% url 'chirp:profile' request.user.profile.id %} ">
+        <button class="button is-success is-light is-outlined is-fullwidth">
+            My Profile
+        </button>
+    </a>
+</div>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Add a Chirp</h5>
+                <div class="form-group">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+                    </form>
+                </div>
+                
             </div>
-        {% endfor %}
-    {% endfor %}
-</div>
-
-<div class="column is-one-third">
-
-    <div class="block">
-        <a href="{% url 'chirp:profile_list' %} ">
-            <button class="button is-dark is-outlined is-fullwidth">
-                All Profiles
-            </button>
-        </a>
-    </div>
-
-    <div class="block">
-        <a href="{% url 'chirp:profile' request.user.profile.id %} ">
-            <button class="button is-success is-light is-outlined is-fullwidth">
-                My Profile
-            </button>
-        </a>
-    </div>
-
-    <div class="block">
-        <div class="block">
-            <h2 class="title is-2">Add a Chirp</p>
         </div>
-        <div class="block">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button class="button is-success is-fullwidth is-medium mt-5"
-                        type="submit">Chirp
-                </button>
-            </form>
+
+        <div class="mt-4">
+            <h5>Chirps</h5>
+            {% for followed in user.profile.follows.all %}
+            {% for chirp in followed.user.chirps.all %}
+
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body comment-box">
+                    <h6 class="card-subtitle mb-2 text-muted">{{ chirp.user.username }}</h6>
+                    <p class="card-text">{{ chirp.body }}</p>
+                    <div class="comment-date">Posted on: {{ chirp.created_at }}</div>
+                </div>
+            </div>
+
+            {% endfor %}
+            {% endfor %}
         </div>
     </div>
 
-</div>
 
 {% endblock content %}
+
+
+
