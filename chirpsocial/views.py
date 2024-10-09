@@ -37,3 +37,6 @@ def profile(request, pk):
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
     return render(request, "chirpsocial/profile.html", {"profile": profile})
+
+def dashboard(request):
+    return render(request, "chirpsocial/dashboard.html")
