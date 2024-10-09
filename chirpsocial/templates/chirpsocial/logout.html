@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h3 class="text-center">You have been logged out</h3>
+        <p class="text-center">Thank you for visiting Chirp. We hope to see you again soon!</p>
+        <div class="text-center mt-3">
+            <a href="{% url 'login' %}" class="btn btn-primary">Log back in</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
