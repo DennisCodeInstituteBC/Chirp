@@ -112,6 +112,49 @@ Using #1DA1F2 ![Sky Blue](https://img.shields.io/badge/Sky%20Blue-1DA1F2?style=f
 
 ## Fonts 
 
+# Features
+
+### Search Options
+
+The Search Options feature enables users to search for other existing users on the platform efficiently. By entering a username, users are presented with a list of matching profiles in the search bar. The search results are displayed in real time, allowing users to quickly find and connect with others. This feature enhances social interactions by making discovering new profiles easy and building community connections.
+<details>
+  <summary>Search Image</summary>
+  
+  ![image](https://github.com/user-attachments/assets/5f943378-f5a8-4c40-a7b4-e14d2a7eba70)
+</details>
+
+### User Post
+
+The User Post feature allows users to not only share their updates but also view their entire post history in one place. Users can easily see a list of all their previous posts, along with the exact date and time when each post was made. This feature provides a comprehensive view of their activity, giving them full control over their content and allowing them to reflect on their posting timeline.
+<details>
+  <summary>User Post Image</summary>
+
+  ![image](https://github.com/user-attachments/assets/806f8ac7-ddac-4782-9b63-b9d8a05cfd6c)
+</details>
+
+### User Authentication
+
+The User Authentication feature ensures that users can securely log into the platform to access specific functionalities. Once authenticated, users can interact with key features such as creating and viewing their posts, as well as exploring other user profiles. This system protects personal data and ensures that only logged-in users can engage with the platform's more interactive and personalized features.
+
+<details>
+  <summary> User Post when logged out</summary>
+
+  ![image](https://github.com/user-attachments/assets/cf65cb65-2e84-4cb5-a4a6-1577b3d85823)
+
+  <summary> User Post when logged in</summary>
+
+  ![image](https://github.com/user-attachments/assets/e4f87b86-eb68-4153-8b9f-19061262a1f3)
+</details>
+
+### User Profile
+
+The User Profile feature gives users a complete view of their social interactions by allowing them to see both the users they are following and those who are following them. This keeps users connected and up to date with new posts from the people they follow, ensuring they don't miss any updates. It also provides an easy way to manage and explore relationships within the platform.
+
+<details>
+  <summary>User Profile Image</summary>
+
+</details>
+
 # Testing
 
 ## HTML Validation
