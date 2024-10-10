@@ -22,7 +22,7 @@
 <!-- Navbar Section -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
     <div class="container">
-        <a class="navbar-brand" href="#">Chirp</a>
+        <a class="navbar-brand" href="/">Chirp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,8 +55,8 @@
             </ul>
 
             <!-- Search Bar on the Right -->
-            <form class="d-flex align-items-center ms-3">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex align-items-center ms-3" method="get" action="{% url 'chirp:search_profiles' %}">
+                <input class="form-control me-2" type="search" name="q" placeholder="Search profiles" aria-label="Search">
                 <button class="btn btn-outline-primary" type="submit">Search</button>
             </form>
         </div>
