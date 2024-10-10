@@ -31,11 +31,16 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
-                '8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net'
+                '8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net',
+                'chirp-social-fcb5ac910432.herokuapp.com',
+                'localhost', '127.0.0.1','.herokuapp.com'
  ]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-denniscodeinstit-chirp-b0w823zbrey.ws.codeinstitute-ide.net',
-                        'https://8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net']
+                        'https://8000-denniscodeinstit-chirp-j6i9m4a45qi.ws.codeinstitute-ide.net',
+                        'https://localhost:8000', 
+                        'https://chirp-social-fcb5ac910432.herokuapp.com',
+                        "https://*.herokuapp.com",]
 
 
 # Application definition
@@ -52,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,7 +98,7 @@ WSGI_APPLICATION = 'chirp.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
 
@@ -133,8 +139,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # or wherever your static files are located
+    BASE_DIR / "static",  
 ]
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
