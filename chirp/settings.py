@@ -47,11 +47,13 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-denniscodeinstit-chirp-b0w823zbrey.ws.code
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'cloudinary_storage',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'chirpsocial',
 ]
 

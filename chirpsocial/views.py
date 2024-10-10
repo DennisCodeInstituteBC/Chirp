@@ -40,3 +40,8 @@ def profile(request, pk):
 
 def dashboard(request):
     return render(request, "chirpsocial/dashboard.html")
+
+def search_profiles(request):
+    query = request.GET.get('q')
+    profiles = Profile.objects.filter(user__username__icontains=query) if query else []
+    return render(request, 'chirpsocial/search_results.html', {'profiles': profiles, 'query': query})
