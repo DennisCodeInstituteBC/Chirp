@@ -138,3 +138,106 @@ Using #1DA1F2 ![Sky Blue](https://img.shields.io/badge/Sky%20Blue-1DA1F2?style=f
 | No.7 |As a user, I can delete my post so that I can correct any mistakes posting. | User can delete their post. | - | - |
 | | | User gets confirmation before deleting. | - | - |
 | | | Deleted posts should not be displayed. | - | - |
+
+## Deployment
+
+### Prepare the Environment and settings.py
+
+Create the env.py file:
+
+In your project root directory (e.g., /workspace/your_project), create an env.py file.
+
+Add your environment variables, such as the SECRET_KEY, and DATABASE_URL.
+
+```
+import os
+
+os.environ["SECRET_KEY"] = "your-secret-key"
+os.environ["DATABASE_URL"] = "your-database-url"
+```
+
+Update settings.py:
+
+Import your env.py file in settings.py:
+
+```
+import os
+if os.path.isfile("env.py"):
+    import env
+```
+Update the following parts in settings.py:
+
+Set the SECRET_KEY and DATABASE_URL from environment variables:
+
+```
+SECRET_KEY = os.getenv("SECRET_KEY")
+DATABASES = {
+    'default': dj_database_url.parse(os.getenv("DATABASE_URL"))
+}
+```
+
+### Steps to Deploy on Heroku:
+
+Install dependencies:
+
+```
+pip3 install -r requirements.txt
+```
+Create a Procfile with the following content:
+```
+web: gunicorn pennypilot.wsgi
+```
+Ensure the ALLOWED_HOSTS in your settings.py includes the Heroku domain:
+
+```
+ALLOWED_HOSTS = ['pennypilot-ed4fcf68cb92.herokuapp.com']
+```
+Open your (Sign up or Log in) Heroku app:
+
+- If you don’t have a Heroku account, visit [Heroku's](https://www.heroku.com/) website and sign up for an account. If you already have an account, log in.
+
+Create a New App:
+
+- Once logged in, go to the Heroku Dashboard.
+- Click on the “New” button in the top right corner and select “Create new app.”
+
+- Choose a unique name for your app and select your preferred region, then click “Create app.”
+
+Connect to Your GitHub Repository:
+
+- On your app’s dashboard, navigate to the “Deploy” tab.
+- In the “Deployment method” section, select “GitHub.”
+
+- Authorize Heroku to access your GitHub account if prompted.
+- Search for your repository and click “Connect.”
+
+Configure Environment Variables:
+
+- Navigate to the “Settings” tab.
+- Click on “Reveal Config Vars.”
+- Add your environment variables, such as **SECRET_KEY** and **DATABASE_URL** by entering the key in the "KEY" field and the value in the "VALUE" field.
+
+Deploy Your App:
+
+- In the “Deploy” tab, scroll down to the “Manual Deploy” section.
+- Choose the branch you want to deploy (usually main) and click “Deploy Branch.”
+- Heroku will start the deployment process. You can view the logs for any errors or confirmation messages during this process.
+
+Run Database Migrations:
+
+- Once the deployment is complete, navigate to the “More” button in the top right corner of the dashboard and select “Run console.”
+
+- In the command line interface, run:
+```
+python manage.py migrate
+```
+Collect Static Files:
+- Still in the console, run the following command to collect static files:
+```
+python manage.py collectstatic
+```
+Open Your App:
+
+After deployment and migrations are complete, go back to the “Overview” tab.
+
+Click on the “Open app” button to view your live application.
