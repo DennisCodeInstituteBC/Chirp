@@ -228,12 +228,12 @@ pip3 install -r requirements.txt
 ```
 Create a Procfile with the following content:
 ```
-web: gunicorn pennypilot.wsgi
+web: gunicorn chirp.wsgi
 ```
 Ensure the ALLOWED_HOSTS in your settings.py includes the Heroku domain:
 
 ```
-ALLOWED_HOSTS = ['pennypilot-ed4fcf68cb92.herokuapp.com']
+ALLOWED_HOSTS = ['chirp-ed4fcf68cb92.herokuapp.com']
 ```
 Open your (Sign up or Log in) Heroku app:
 
