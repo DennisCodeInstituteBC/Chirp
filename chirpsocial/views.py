@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .forms import ChirpForm
 from .models import Profile
 from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib import messages
+from .forms import RegisterForm
 
 # Create your views here.
 def dashboard(request):
@@ -43,3 +46,22 @@ def search_profiles(request):
     query = request.GET.get('q')
     profiles = Profile.objects.filter(user__username__icontains=query) if query else []
     return render(request, 'chirpsocial/search_results.html', {'profiles': profiles, 'query': query})
+
+
+
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            # Ensure that the Profile is created only if it does not exist
+            Profile.objects.get_or_create(user=user)
+            login(request, user)  # Automatically log the user in after registration
+            messages.success(request, "Registration successful.")
+            return redirect("chirp:dashboard")
+        else:
+            messages.error(request, "Registration failed. Please correct the errors below.")
+    else:
+        form = RegisterForm()
+
+    return render(request, "chirpsocial/register.html", {"form": form})

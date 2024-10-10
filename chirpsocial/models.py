@@ -6,6 +6,8 @@ from django.dispatch import receiver
 
 # Create your models here.
 
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     follows = models.ManyToManyField(
@@ -16,8 +18,8 @@ class Profile(models.Model):
     )
     name = models.CharField(max_length=200, unique=False)
     gender = models.CharField(max_length=200, unique=False)
-    age = models.IntegerField()
-    bio = models.TextField()
+    age = models.IntegerField(null=True, blank=True)  
+    bio = models.TextField(blank=True)  
     chirp_cloudinary_img = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
@@ -47,3 +49,4 @@ class chirp(models.Model):
 post_save.connect(create_profile, sender=User)
 
 
+chirp_cloudinary_img = CloudinaryField('image', default='placeholder')
