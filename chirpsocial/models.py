@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -17,6 +18,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=200, unique=False)
     age = models.IntegerField()
     bio = models.TextField()
+    chirp_cloudinary_img = CloudinaryField('image', default='placeholder')
 
     def __str__(self):
         return self.user.username
