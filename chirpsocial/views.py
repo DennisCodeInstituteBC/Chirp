@@ -5,14 +5,14 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def dashboard(request):
-     if request.method == "POST":
-        form = ChirpForm(request.POST or None)
+    form = ChirpForm(request.POST or None)
+    if request.method == "POST":
         if form.is_valid():
             chirp = form.save(commit=False)
             chirp.user = request.user
             chirp.save()
-            return redirect("chirpsocial:dashboard")
-        return render(request, "chirpsocial/dashboard.html", {"form": form})
+            return redirect("chirp:dashboard")
+    return render(request, "chirpsocial/dashboard.html", {"form": form})
 
 def profile_list(request):
     profiles = Profile.objects.all()
@@ -38,8 +38,6 @@ def profile(request, pk):
         current_user_profile.save()
     return render(request, "chirpsocial/profile.html", {"profile": profile})
 
-def dashboard(request):
-    return render(request, "chirpsocial/dashboard.html")
 
 def search_profiles(request):
     query = request.GET.get('q')

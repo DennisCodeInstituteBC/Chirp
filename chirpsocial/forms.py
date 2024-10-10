@@ -7,7 +7,9 @@ class ChirpForm(forms.ModelForm):
         widget=forms.widgets.Textarea(
             attrs={
                 "placeholder": "Chirp something...",
-                "class": "textarea is-success is-medium",
+                "class": "form-control is-success is-medium", 
+                "rows": 4, 
+                "style": "resize: vertical;",
             }
         ),
         label="",
