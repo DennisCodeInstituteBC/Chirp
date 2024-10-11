@@ -158,8 +158,16 @@ The User Profile feature gives users a complete view of their social interaction
 # Testing
 
 ## HTML Validation
+
+
 ## CSS Validation
+
+![alt text](image-1.png)
+
 ## Google Lighthouse
+
+![alt text](image.png)
+
 ## User Story testing
 
 | Test Number | User Story | Acceptance Criteria | Pass| Fail | 
