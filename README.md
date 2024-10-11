@@ -152,7 +152,8 @@ The User Profile feature gives users a complete view of their social interaction
 
 <details>
   <summary>User Profile Image</summary>
-
+  
+  ![image](https://github.com/user-attachments/assets/c4162959-681e-44aa-8f48-9fc7d7d7a283)
 </details>
 
 # Testing
