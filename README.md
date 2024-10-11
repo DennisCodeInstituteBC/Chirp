@@ -110,8 +110,6 @@ Using #1DA1F2 ![Sky Blue](https://img.shields.io/badge/Sky%20Blue-1DA1F2?style=f
 
 #17BF63 ![#17BF63 Green](https://img.shields.io/badge/Green-17BF63?style=flat-square&logoColor=white) for buttons adds a vibrant, energetic touch that draws attention to interactive elements. This colour choice reinforces positive actions like submitting or following while ensuring buttons stand out against the neutral backgrounds.
 
-## Fonts 
-
 # Features
 
 ### Search Options
@@ -160,7 +158,7 @@ The User Profile feature gives users a complete view of their social interaction
 
 ## HTML Validation
 
-
+![image](https://github.com/user-attachments/assets/02fdc401-1b29-462e-8e6e-bf969259faa1)
 
 ## CSS Validation
 
