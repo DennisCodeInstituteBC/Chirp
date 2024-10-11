@@ -159,9 +159,22 @@ The User Profile feature gives users a complete view of their social interaction
 
 ## HTML Validation
 
+
+
+## CSS Validation
+
+![alt text](image-1.png)
+
+## Google Lighthouse
+
+![alt text](image.png)
+
+## User Story testing
+
 ## CSS Validation
 
 ## Google Lighthouse
+
 
 ## CI Python Linter
 ![image](https://github.com/user-attachments/assets/f69fba70-3abd-457c-900d-8a6ec0dcca2d)
