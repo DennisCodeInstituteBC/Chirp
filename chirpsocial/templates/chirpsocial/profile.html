@@ -3,161 +3,126 @@
 
 {% block content %}
 <div class="container mt-5">
-  
-    
-    <div class="container mt-5">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <h4 class="display-5 text-uppercase">
-                        {{ profile.user.username }}'s Chirp
-                    </h4>
-                </h5>
-            </div>
+    <!-- Profile Header -->
+    <div class="card shadow mb-4">
+        <div class="card-body text-center">
+            <h2 class="display-5 text-uppercase">
+                {{ profile.user.username }}'s Chirps
+            </h2>
         </div>
     </div>
 
-    <div class="row">
+    <!-- Profile Picture and Info -->
+    <div class="row align-items-center">
         <div class="col-12 col-md-4 text-center">
             {% if profile.chirp_cloudinary_img == 'placeholder' %}
-            <img src="{% static 'images/nobody.jpg' %}" alt="placeholder image" width="85%" class="profile_image">
+            <img src="{% static 'images/nobody.jpg' %}" alt="Placeholder Image" class="img-fluid rounded-3 profile-image mb-4">
             {% else %}
-            <img src="{{ profile.chirp_cloudinary_img.url }}" alt="{{ profile.name }}" width="85%" class="chirp_cloudinary_img">
+            <img src="{{ profile.chirp_cloudinary_img.url }}" alt="{{ profile.name }}" class="img-fluid rounded-3 profile-image mb-4">
             {% endif %}
         </div>
+
         <div class="col-12 col-md-8">
-           
-        </div>
-    </div>
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h4 class="h5">Bio</h4>
+                    <p>{{ profile.bio }}</p>
 
-    <div class="container mt-5">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <div class="mb-4">
-                        <h3 class="h5">
-                            Bio: {{ profile.bio }}
-                        </h3>
-                    </div>
-                </h5>
-            </div>
-        </div>
-        <form method="post">
-            {% csrf_token %}
-            <div class="mt-3">
-                {% if profile in user.profile.follows.all %}
-                <button class="btn btn-dark btn-sm" disabled>Follow</button>
-                <button class="btn btn-secondary btn-sm" name="follow" value="unfollow">Unfollow</button>
-                {% else %}
-                <button class="btn btn-dark btn-sm" name="follow" value="follow">Follow</button>
-                <button class="btn btn-secondary btn-sm" disabled>Unfollow</button>
-                {% endif %}
-            </div>
-        </form>
-    </div>
-
-
-    
-    
-
-    <div class="container mt-5">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <div class="mb-4">
-                        <div class="content">
-                            {% for chirp in profile.user.chirps.all %}
-                            <div class="box">
-                                {{ chirp.body }}
-                                <span class="is-small has-text-grey-light">
-                                    ({{ chirp.created_at }})
-                                </span>
-                            </div>
-                            {% endfor %}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6><strong>Name:</strong></h6>
+                            <p>{{ profile.name }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6><strong>Gender:</strong></h6>
+                            <p>{{ profile.gender }}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6><strong>Age:</strong></h6>
+                            <p>{{ profile.age }}</p>
                         </div>
                     </div>
-                </h5>
+                </div>
+    <!-- Follow/Unfollow Buttons -->
+                <div class="d-flex justify-content-center mt-3 mb-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% if profile in user.profile.follows.all %}
+                        <button class="btn btn-secondary btn-sm me-2" disabled>Follow</button>
+                        <button class="btn btn-outline-dark btn-sm" name="follow" value="unfollow">Unfollow</button>
+                        {% else %}
+                        <button class="btn btn-dark btn-sm me-2" name="follow" value="follow">Follow</button>
+                        <button class="btn btn-outline-secondary btn-sm" disabled>Unfollow</button>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="mb-3">
-        <a href="{% url 'chirp:profile_list' %}">
-            <button class="btn btn-outline-dark btn-block">
-                All Profiles
-            </button>
-        </a>
-    </div>
-
-    <div class="container mt-5">
-        <div class="card shadow mb-4">
+    <!-- Following and Followers Sections in Columns -->
+<div class="row">
+    <!-- Following Section -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow">
             <div class="card-body">
-                <h5 class="card-title">
-                    <div class="mb-4">
-                        <h3 class="h5">
-                            Name: {{ profile.name }}
-                        </h3>
-                        <h3 class="h5">
-                            Gender: {{ profile.gender }}
-                        </h3>
-                        <h3 class="h5">
-                            Age: {{ profile.age }}
-                        </h3>
-                    </div>
-                </h5>
+                <h4 class="h5">{{ profile.user.username }} Follows</h4>
+                <ul class="list-unstyled">
+                    {% for following in profile.follows.all %}
+                    <li>
+                        <a href="{% url 'chirp:profile' following.id %}" class="text-decoration-none">{{ following }}</a>
+                    </li>
+                    {% empty %}
+                    <p class="text-muted">Not following anyone yet.</p>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class="container mt-5">
-        <div class="card shadow mb-4">
+    <!-- Followers Section -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow">
             <div class="card-body">
-                <h5 class="card-title">
-                    <div class="mb-4">
-                        <h3 class="h5">
-                            {{ profile.user.username }} follows:
-                        </h3>
-                        <div class="content">
-                            <ul class="list-unstyled">
-                                {% for following in profile.follows.all %}
-                                <li>
-                                    <a href="{% url 'chirp:profile' following.id %}" class="text-decoration-none">
-                                        {{ following }}
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </h5>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5">
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <div class="mb-4">
-                        <h3 class="h5">
-                            {{ profile.user.username }} is followed by:
-                        </h3>
-                        <div class="content">
-                            <ul class="list-unstyled">
-                                {% for follower in profile.followed_by.all %}
-                                <li>
-                                    <a href="{% url 'chirp:profile' follower.id %}" class="text-decoration-none">
-                                        {{ follower }}
-                                    </a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </h5>
+                <h4 class="h5">{{ profile.user.username }}'s Followers</h4>
+                <ul class="list-unstyled">
+                    {% for follower in profile.followed_by.all %}
+                    <li>
+                        <a href="{% url 'chirp:profile' follower.id %}" class="text-decoration-none">{{ follower }}</a>
+                    </li>
+                    {% empty %}
+                    <p class="text-muted">No followers yet.</p>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
 </div>
+
+    
+    <!-- Chirps Section -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h4 class="h5 mb-4">{{ profile.user.username }}'s Chirps</h4>
+            {% for chirp in profile.user.chirps.all %}
+            <div class="box mb-3 p-3 border rounded">
+                <p>{{ chirp.body }}</p>
+                <small class="text-muted">Posted on {{ chirp.created_at }}</small>
+            </div>
+            {% empty %}
+            <p class="text-muted">No chirps available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS for Profile -->
+<style>
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+</style>
 
 {% endblock content %}
